@@ -1,0 +1,18 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "982JJP92PQ.com.cagadaremunerada.cagadaRemunerada"
+        ],
+        "components": [
+          {
+            "/": "/",
+            "?": { "invite": "??????" },
+            "comment": "Convites para rankings online"
+          }
+        ]
+      }
+    ]
+  }
+}
