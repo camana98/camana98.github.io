@@ -5,16 +5,15 @@ Ele precisa ser publicado na raiz desse repositório com GitHub Pages habilitado
 
 O link HTTPS será `https://camana98.github.io/?invite=ABC234`. O arquivo
 `.well-known/apple-app-site-association` usa o Team ID e Bundle ID do projeto.
-Antes de ativar o link HTTPS no app, confira a resposta pública desse arquivo,
-inclusive status 200, sem redirecionamento e `Content-Type: application/json`.
-GitHub Pages pode servir arquivos sem extensão com outro MIME; nesse caso,
-é necessário hospedar a associação em um serviço que permita definir esse
-cabeçalho. O site de fallback continua útil no GitHub Pages.
+O app compartilha essa URL HTTPS por padrão. Se a hospedagem mudar, compile
+com `--dart-define=TRONO_INVITE_WEB_ORIGIN=https://novo-dominio` e atualize o
+domínio associado em `ios/Runner/Runner.entitlements`.
 
-Depois da verificação, compile o app com
-`--dart-define=TRONO_INVITE_WEB_ORIGIN=https://camana98.github.io` para
-compartilhar a URL HTTPS. Sem essa definição, o app compartilha o link direto
-`cagadaremunerada://app/invite/CODIGO` e oferece o código manual no texto.
+GitHub Pages serve o arquivo de associação como `application/octet-stream`.
+Em 8 de outubro de 2026, a CDN da Apple conseguiu buscá-lo e o entregou como
+JSON. Ainda é preciso validar a abertura direta em um build instalado no iOS.
+Se a verificação falhar, use uma hospedagem que permita responder ao arquivo
+sem redirecionamento e com `Content-Type: application/json`.
 
 O ranking online atualmente autentica apenas no iOS. Para Android App Links,
 será preciso habilitar autenticação Android e publicar um `assetlinks.json`
